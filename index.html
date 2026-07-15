@@ -18,7 +18,6 @@
 </head>
 <body>
 
-<!-- 1. KODE AUDIO - FILE HARUS NAMA "bulan-ksatria.mp3" -->
 <audio id="bgm" loop>
   <source src="bulan-ksatria.mp3" type="audio/mpeg">
 </audio>
@@ -37,7 +36,6 @@
     Gedung Serbaguna Jakarta
   </div>
 
-  <!-- 2. TOMBOL IJO BUAT MUSIK -->
   <button onclick="var a=document.getElementById('bgm'); a.paused ? a.play() : a.pause(); this.innerHTML = a.paused ? '🎵 Putar Musik' : '⏸️ Pause Musik'">
     🎵 Putar Musik
   </button>
@@ -59,10 +57,7 @@
   <p id="pesanRSVP" style="color:#27ae60; font-weight:bold;"></p>
 </div>
 
-
-<!-- 3. KODE JAVASCRIPT - TARO PALING BAWAH -->
 <script>
-// COUNTDOWN
 const tanggalNikah = new Date("Dec 20, 2026 08:00:00").getTime();
 setInterval(function() { 
   const now = new Date().getTime(); 
@@ -79,7 +74,6 @@ setInterval(function() {
   `; 
 }, 1000); 
 
-// FORM RSVP
 function kirimRSVP() { 
   const nama = document.getElementById("namaTamu").value;
   const status = document.getElementById("status").value;
