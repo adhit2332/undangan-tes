@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Undangan Adhitya & Yesica</title>
+<style>
+  body { font-family: 'Georgia', serif; text-align: center; background: #fdf6f0; color: #5a3e2b; margin:0; padding:20px; }
+  .card { background: white; max-width: 500px; margin: auto; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+  img { width: 100%; border-radius: 10px; margin: 15px 0; }
+  h1 { color: #b8860b; }
+  .tanggal { font-size: 18px; margin: 20px 0; }
+  .countdown { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
+  .countdown div { background: #b8860b; color: white; padding: 10px; border-radius: 8px; min-width: 60px; }
+  .btn { display: inline-block; background: #25D366; color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; margin: 10px 5px; }
+  .btn.maps { background: #4285F4; }
+  input, button { padding: 10px; margin: 5px; border-radius: 5px; border: 1px solid #ccc; }
+</style>
+</head>
+<body>
+
+<audio id="musik" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+  <h1>Undangan Pernikahan</h1>
+  <h2>ADHITYA RIZKY & YESICA PUTRI</h2>
+  
+  <img src="https://files.catbox.moe/i3kk8y.jpg" alt="Foto Mempelai">
+  
+  <p>Dengan memohon rahmat Allah SWT, kami mengundang Anda</p>
+  
+  <div class="tanggal">
+    <b>Akad & Resepsi</b><br>
+    Minggu, 20 Desember 2026<br>
+    Gedung Serbaguna Jakarta
+  </div>
+
+  <h3>Hitung Mundur</h3>
+  <div class="countdown" id="countdown"></div>
+
+  <a href="https://maps.google.com/?q=Gedung+Serbaguna+Jakarta" target="_blank" class="btn maps">📍 Buka Google Maps</a>
+  <button onclick="document.getElementById('musik').play()" class="btn">🎵 Putar Musik</button>
+
+  <h3>Konfirmasi Kehadiran</h3>
+  <input type="text" id="namaTamu" placeholder="Nama Anda">
+  <select id="status">
+    <option value="Hadir">Hadir</option>
+    <option value="Tidak Hadir">Tidak Hadir</option>
+  </select>
+  <button onclick="kirimRSVP()" class="btn">Kirim</button>
+  <p id="pesanRSVP"></p>
+
+</div>
+
+<script>
+// 1. HITUNG MUNDUR
+const tanggalNikah = new Date("Dec 20, 2026 08:00:00").getTime();
+setInterval(function() {
+  const now = new Date().getTime();
+  const jarak = tanggalNikah - now;
+  const hari = Math.floor(jarak / (1000 * 60 * 60 * 24));
+  const jam = Math.floor((jarak % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const menit = Math.floor((jarak % (1000 * 60 * 60)) / (1000 * 60));
+  const detik = Math.floor((jarak % (1000 * 60)) / 1000);
+  document.getElementById("countdown").innerHTML = 
+  `<div>${hari}<br>Hari</div><div>${jam}<br>Jam</div><div>${menit}<br>Menit</div><div>${detik}<br>Detik</div>`;
+}, 1000);
+
+// 2. FORM RSVP SEDERHANA
+function kirimRSVP() {
+  const nama = document.getElementById("namaTamu").value;
+  const status = document.getElementById("status").value;
+  if(nama === "") { alert("Isi nama dulu ya"); return; }
+  document.getElementById("pesanRSVP").innerText = `Terima kasih ${nama}, status: ${status}`;
+  // Catatan: ini cuma muncul di HP tamu. Kalo mau datanya masuk ke Google Sheet kita bikin lagi
+}
+</script>
+
+</body>
+</html>
