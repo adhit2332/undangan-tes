@@ -1,24 +1,21 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Undangan Adhitya & Yesica</title>
-<style>
-  body { font-family: 'Georgia', serif; text-align: center; background: #fdf6f0; color: #5a3e2b; margin:0; padding:20px; }
-  .card { background: white; max-width: 500px; margin: auto; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-  img { width: 100%; border-radius: 10px; margin: 15px 0; }
-  h1 { color: #b8860b; }
-  .tanggal { font-size: 18px; margin: 20px 0; }
-  .countdown { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
-  .countdown div { background: #b8860b; color: white; padding: 10px; border-radius: 8px; min-width: 60px; }
-  .btn { display: inline-block; background: #25D366; color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; margin: 10px 5px; }
-  .btn.maps { background: #4285F4; }
-  input, button { padding: 10px; margin: 5px; border-radius: 5px; border: 1px solid #ccc; }
-</style>
+  <title>Undangan Pernikahan</title>
+  <style>
+    body { font-family: Arial; background: #fdf6f0; text-align: center; padding: 20px; }
+    .card { background: white; padding: 20px; border-radius: 15px; max-width: 500px; margin: auto; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    h1 { color: #c0392b; }
+    h2 { color: #27ae60; }
+    img { width: 100%; border-radius: 10px; margin: 15px 0; }
+    .tanggal { margin: 20px 0; font-size: 18px; }
+    button { padding:14px 24px; background:#27ae60; color:white; border:none; border-radius:12px; font-weight:bold; font-size:16px; margin:15px 0; cursor:pointer; }
+    button:hover { background:#219150; }
+  </style>
 </head>
 <body>
 
+<!-- KODE AUDIO - PASTIKAN NAMA FILE SAMA -->
 <audio id="bgm" loop>
   <source src="bulan-ksatria.mp3" type="audio/mpeg">
 </audio>
@@ -27,7 +24,7 @@
   <h1>Undangan Pernikahan</h1>
   <h2>ADHITYA RIZKY & YESICA PUTRI</h2>
   
-  <img src="https://files.catbox.moe/i3kk8y.jpg" alt="Foto Mempelai">
+  <img src="https://files.catbox.moe/i3kk8y.jpg" alt="Foto">
   
   <p>Dengan memohon rahmat Allah SWT, kami mengundang Anda</p>
   
@@ -36,30 +33,30 @@
     Minggu, 20 Desember 2026<br>
     Gedung Serbaguna Jakarta
   </div>
-<button onclick="var a=document.getElementById('bgm'); a.paused ? a.play() : a.pause(); this.innerHTML = a.paused ? '🎵 Putar Musik' : '⏸️ Pause Musik'" 
-        style="padding:14px 24px; background:#27ae60; color:white; border:none; border-radius:12px; font-weight:bold; font-size:16px; margin:15px 0;">
-  🎵 Putar Musik
-</button>
+
+  <!-- TOMBOL IJO BUAT PUTAR MUSIK -->
+  <button onclick="var a=document.getElementById('bgm'); a.paused ? a.play() : a.pause(); this.innerHTML = a.paused ? '🎵 Putar Musik' : '⏸️ Pause Musik'">
+    🎵 Putar Musik
+  </button>
+  
   <h3>Hitung Mundur</h3>
   <div class="countdown" id="countdown"></div>
 
-  <a href="https://maps.google.com/?q=Gedung+Serbaguna+Jakarta" target="_blank" class="btn maps">📍 Buka Google Maps</a>
+  <a href="https://maps.google.com/?q=Gedung+Serbaguna+Jakarta" target="_blank">
+    <button style="background:#2980b9;">📍 Buka Maps</button>
+  </a>
 
   <h3>Konfirmasi Kehadiran</h3>
-  <input type="text" id="namaTamu" placeholder="Nama Anda">
+  <input type="text" id="namaTamu" placeholder="Nama Anda"><br><br>
   <select id="status">
     <option value="Hadir">Hadir</option>
     <option value="Tidak Hadir">Tidak Hadir</option>
-  </select>
-  <button onclick="kirimRSVP()" class="btn">Kirim</button>
-  <p id="pesanRSVP"></p>
-
+  </select><br><br>
+  <button style="background:#8e44ad;" onclick="alert('Terima kasih konfirmasinya!')">Kirim</button>
 </div>
 
-<script>
-// 1. HITUNG MUNDUR
-const tanggalNikah = new Date("Dec 20, 2026 08:00:00").getTime();
-setInterval(function() {
+</body>
+</html>setInterval(function() {
   const now = new Date().getTime();
   const jarak = tanggalNikah - now;
   const hari = Math.floor(jarak / (1000 * 60 * 60 * 24));
